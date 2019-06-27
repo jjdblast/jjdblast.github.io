@@ -16,9 +16,11 @@
 
   <!-- Title -->
   
-  <title>Jiandong Jin</title>
+  <title>HiWeGo - Jiandong Jin</title>
 
   <!--Description-->
+  
+      <meta name="description" content="HiWeGoWe present HiWeGO, an app which can be used to watch AR soccer match on your mobile device. Please have a look at this Introduction video to enj">
   
 
   <!--Author-->
@@ -27,6 +29,8 @@
   
 
   <!--Open Graph Title-->
+  
+      <meta property="og:title" content="HiWeGo">
   
 
   <!--Open Graph Site Name-->
@@ -90,48 +94,36 @@
 
 
 		<div class="container">
-			<div class="row">
-
-  
-      <div class="col-lg-4 col-md-6 col-12 mb-5">
-  <div class="image-box">
-    <div class="post-image">
-      <a href="/2019/06/20/2019-06-20-HiWeGo/">
-        <img class="img-fluid" src="/images/covers/cover_HiWeGo.png" alt="HiWeGo">
-      </a>
+			
+  <div class="row">
+    <div class="col-12">
+          <img class="img-fluid cover-image" src="/images/covers/cover_HiWeGo.png" alt="HiWeGo">
     </div>
   </div>
-  <div class="post-details text-center mt-3">
-    <a href="/2019/06/20/2019-06-20-HiWeGo/">HiWeGo</a>
-    <hr>
-    <span class="date">2019-06-20</span>
-  </div>
-</div>
-
-  
-      <div class="col-lg-4 col-md-6 col-12 mb-5">
-  <div class="image-box">
-    <div class="post-image">
-      <a href="/2019/01/22/2019-01-22-road-brain/">
-        <img class="img-fluid" src="/images/covers/cover_road_brain.png" alt="Road Brain">
-      </a>
-    </div>
-  </div>
-  <div class="post-details text-center mt-3">
-    <a href="/2019/01/22/2019-01-22-road-brain/">Road Brain</a>
-    <hr>
-    <span class="date">2019-01-22</span>
-  </div>
-</div>
-
-  
-
-</div>
 
 <div class="row">
-  
+  <div class="col-12 col-lg-8 offset-lg-2 mt-4">
 
+    <div class="post-page text-center my-4">
+      <h1>HiWeGo</h1>
+      <hr>
+      <span class="date">2019-06-20</span>
+    </div>
+
+    <h3 id="HiWeGo"><a href="#HiWeGo" class="headerlink" title="HiWeGo"></a>HiWeGo</h3><p>We present HiWeGO, an app which can be used to watch AR soccer match on your mobile device. Please have a look at this Introduction video to enjoy.</p>
+<iframe src="//player.bilibili.com/player.html?aid=56954491&cid=99476772&page=1" style="width:640px; height:460px" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<p>To convert soccer match video into AR view, monocular depth estimation and 3d reconstruction tech are used, the pipeline of our work is presented below:</p>
+<p>First, we implemented tracking by detection algorithms in monocular soccer match video, then we can get each player’s mask by mask-rcnn, and their pose by pose estimation (in this work, we use OpenPose). </p>
+<p>The mask and pose are needed by our depth estimation model, we use a mulit-head CNN to predict each player’s depth.</p>
+
+
+    
+
+
+  </div>
 </div>
+
 
 
 			<footer class="text-center mt-5 py-5">
