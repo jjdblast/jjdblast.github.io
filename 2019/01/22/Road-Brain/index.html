@@ -114,22 +114,18 @@
 <center><img src="pipeline.png" width="80%" height="80%"></center>
 
 
-
 <p>RoadBrain可以对城市交叉口的交通流情况（速度、流量）、驾驶行为（换道、转弯半径）等进行精细化的分析，RoadBrain通过实景可视化以及实时交通指标的采集，可以实现平行交通场景重建，有助于加深交通管理者对交通环境的理解，为交通管理者提供更好的决策支持。</p>
 <h3 id="2-技术细节"><a href="#2-技术细节" class="headerlink" title="2. 技术细节"></a>2. 技术细节</h3><p>系统底层输入是多路视频流，首先通过2D ROI检测找到视频帧中的行人和车辆；再将ROI送入关键点提取网络和3D提取网络。其中，行人关键点提取利用了OpenPose，车辆关键点提取网络利用了Occlusion Net，网络结构如下图所示：</p>
 <center><img src="keypoints_pipeline.png" width="90%" height="90%"></center>
-
 
 
 <p>对于3d行人关键点检测，我们使用的是现成的OpenPose框架，该框架可以得到精准、实时的人体关键点检测，其核心是一种利用Part Affinity Fields（PAFs）的自下而上的人体姿态估计算法。算法先通过CPM网络（如上图所示）回归出所有关键点位置，再通过PAF对不同人的关节进行划分，由于采用了自下而上的方式进行检测，因此可以实现人群关键点的快速检测。得到2D人体关键点后，我们使用MonoLoco模型得到3D关键点，该模型使用一种基于拉普拉斯分布损失函数（Laplace distribution loss）的轻量化神经网络预测3D位置信息和误差，模型如下图所示：</p>
 <center><img src="3dpose_pipeline.png" width="90%" height="90%"></center>
 
 
-
 <p>对于3d车辆关键点检测，我们使用了CMU提出的Occlusion Net，该框架大部分是自监督学习模型，有很强的可扩展性。模型先通过Mask-RCNN实现对目标可见关键点的识别；基于这些初始关键点，模型通过图编码网络（Graph Encoder Network）预测被遮挡的关键点的位置，以及图解码网络（Graph Decoder Network）从初始关键节点校正被遮挡的关键点位置；其中校正的损失函数是三焦向量误差（Trifocal tensor loss），训练时通过找到被遮挡关键点在不同角度下的对应点来提供自监督学习的样本；最后模型再将得到的2D关键点通过图网络投影到3D空间，同样使用自监督学习的重投影误差来估计车辆的3D形状和相机位姿。</p>
 <p>为了增加3d车辆关键点检测模型的鲁棒性，我们又引入了车辆3D信息估计模型作为关键点检测的补充。我们使用了国立清华大学提出的一种单目3D车辆检测和跟踪模型，引入了视频的时序信息来提供稳定的3D信息估计，流程如下图所示：</p>
 <center><img src="3dbox_pipeline.png" width="90%" height="90%"></center>
-
 
 
 <p>使用多种模型融合有助于提高我们车辆、行人关键点信息检测的鲁棒性；而引入了自监督学习、表示学习的思想可以使得我们系统可以适应多种监控环境。</p>
@@ -150,10 +146,6 @@
     <a href="https://twitter.com/?lang=en" target="_blank"><i class="fa fa-twitter mr-4"></i></a>
   
   
-    <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook mr-4"></i></a>
-  
-  
-    <a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram mr-4"></i></a>
   
   
     <a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin mr-4"></i></a>
