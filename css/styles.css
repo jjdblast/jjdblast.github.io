@@ -1,5 +1,5 @@
 body {
-	font-family: 'EB Garamond', serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 1.25rem;
 	color: #333;
 }
@@ -156,6 +156,22 @@ input:focus, textarea:focus {
 	margin-bottom: 0px;
 }
 
+.title {
+	color: rgb(0, 0, 0);
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.0rem;
+	font-weight: 1000;
+	letter-spacing: 2px;
+}
+
+.subtitle {
+	color: #666;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 0.85rem;
+	font-weight: 300;
+	letter-spacing: 2px;
+}
+
 .date {
 	color: #666;
 	font-family: 'Montserrat', sans-serif;
@@ -190,6 +206,7 @@ input:focus, textarea:focus {
 }
 
 .post-page h1 {
+	font-family: 'Montserrat', sans-serif;
 	text-align: center;
 }
 
