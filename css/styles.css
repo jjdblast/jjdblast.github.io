@@ -1,6 +1,6 @@
 body {
 	font-family: 'Montserrat', sans-serif;
-	font-size: 1.25rem;
+	font-size: 1.1rem;
 	color: #333;
 }
 
@@ -208,6 +208,16 @@ input:focus, textarea:focus {
 .post-page h1 {
 	font-family: 'Montserrat', sans-serif;
 	text-align: center;
+	font-weight: 800;
+}
+
+.post-page h2, h3, h4, h5, h6 {
+	font-family: 'Montserrat', sans-serif;
+	margin-bottom: 1.3rem;
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 1.1;
+    color: inherit;
 }
 
 .post-page hr {
