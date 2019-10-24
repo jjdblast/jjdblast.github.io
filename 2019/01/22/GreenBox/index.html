@@ -20,7 +20,7 @@
 
   <!--Description-->
   
-      <meta name="description" content="A Sensible Way To PlantGrowing plants all by yourself can be one of the most rewarding things you’ll ever do. For harvesting, we need plenty of time a">
+      <meta name="description" content="A “Senseable” Way To PlantGrowing plants all by yourself can be one of the most rewarding things you’ll ever do. For harvesting, we need plenty of tim">
   
 
   <!--Author-->
@@ -106,9 +106,12 @@
       <span class="date">2019-01</span>
     </div>
 
-    <h3 id="A-Sensible-Way-To-Plant"><a href="#A-Sensible-Way-To-Plant" class="headerlink" title="A Sensible Way To Plant"></a>A Sensible Way To Plant</h3><p><strong>Growing</strong> plants all by yourself can be one of the most rewarding things you’ll ever do. For harvesting, we need plenty of time and experience, so how about growing plants under the guidance of AI? </p>
+    <h3 id="A-“Senseable”-Way-To-Plant"><a href="#A-“Senseable”-Way-To-Plant" class="headerlink" title="A “Senseable” Way To Plant"></a>A “Senseable” Way To Plant</h3><p><strong>Growing</strong> plants all by yourself can be one of the most rewarding things you’ll ever do. For harvesting, we need plenty of time and experience, so how about growing plants under the guidance of AI? </p>
 <p>The key points of designing an AI planting platform are <strong>Sensing</strong> and <strong>Inferencing</strong>. <strong>Sensing</strong> means to monitor and digitalize the status of plants; <strong>Inferencing</strong> means to make a series of decisions, including irrigation fertilization, and illumination. </p>
 <p>GreenBox is designed to solve the <strong>Sensing</strong> problem, it is a tabletop-sized and easy-to-build planting platform with smart robotic systems to control the environment, climate, and monitor the status of the plant growth; For solving the <strong>Inferencing</strong> problem, I also designed GreenBox-KG, which is a knowledge graph built by data collected from GreenBox to make better decisions in the planting process.</p>
+<center><br><iframe src="http://upos-hz-mirrorakam.akamaized.net/upgcxcode/75/22/125252275/125252275-1-208.mp4?e=ig8euxZM2rNcNbeMhbUVhoMH7wNBhwdEto8g5X10ugNcXBB_&uipk=5&nbs=1&deadline=1571904020&gen=playurl&os=akam&oi=1822461673&trid=f026ec0d994c41df9982f53ad29b5c8fT&platform=html5&upsig=62cf5fed789e5018700be5c0fd5ec534&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&hdnts=exp=1571904020~hmac=a4e4f77e557559c66858dbc3fb2b67aaf281b7df685228771e46128027141b92&mid=0" allowfullscreen="true" width="100%" height="400" frameborder="0"> </iframe><br></center>
+
+<p><br></p>
 <h3 id="GreenBox"><a href="#GreenBox" class="headerlink" title="GreenBox"></a>GreenBox</h3><p>The main shell of GreenBox is a tiny greenhouse equipped with multiple environment sensors, includes CO2, air temperature, humidity, root-zone temperature, and electrical conductivity, sensors’s data will be collected and analyzed on Raspberry Pi. </p>
 <center><br><img width="400" height="300" style="border-radius: 0.3125em;
 box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_greenbox.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -182,7 +185,7 @@ display: inline-block;
 color: #999;
 padding: 2px;">GreenBox Data Visualization</div><br></center>
 
-<p>I use raspberry pi 3b+ to collect sensors’s data and comunicate with arduino, the actual control task is done by arduino. In order to monitor and analysis the whole system, I wrote a service on RPI to store all sensors’s data in <a href="https://sqlite.org/index.html" target="_blank" rel="noopener">SQLite DB</a> in realtime, then deploy <a href="https://superset.incubator.apache.org/" target="_blank" rel="noopener">Apache Superset</a> to provide data management and visulization, all softwares and servcies are running on RPI, so it’s energy efficient and low cost.</p>
+<p>I use raspberry pi 3b+ to collect sensors’s data and comunicate with arduino, the actual control task is done by arduino. In order to monitor and analysis the whole system, I wrote a service on RPI to store all sensors’s data in <a href="https://sqlite.org/index.html" target="_blank" rel="noopener">SQLite DB</a> in realtime, then deploy <a href="https://superset.incubator.apache.org/" target="_blank" rel="noopener">Apache Superset</a> to provide data management and visulization, all softwares and servcies are running on RPI, so it’s pretty energy efficient. It’s cost is also affordable for student, now my hardware costs for GreenBox version 1.0 is about 200$. </p>
 <h3 id="GreenBox-KG"><a href="#GreenBox-KG" class="headerlink" title="GreenBox-KG"></a>GreenBox-KG</h3><p>Since I haven’t collect enough growing data when I started this project, so a solution for <a href="https://en.wikipedia.org/wiki/Cold_start_(computing" target="_blank" rel="noopener">cold-starting</a>) is  to crawl open-source agriculture common knowledge data, such as wikipedia. In this project, I found <a href="http://www.baike.com/" target="_blank" rel="noopener">hudong baike</a> is very useful, which is a chinese version wikipedia contains many domain knowledge, I crawled agriculture related subjects from hudong baike, table below shows some samples.</p>
 <center><br><img width="750" height="150" style="border-radius: 0.3125em;
 box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_baike_table.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -207,7 +210,7 @@ padding: 2px;">Building Knowledge Graph in Neo4J DB</div><br></center>
 <p>After simple data preprocessing, all data was saved into <a href="https://neo4j.com/" target="_blank" rel="noopener">Neo4J DB</a>. A simple knowledge graph can be built using Neo4J , I also implemented a <a href="http://docs.deeppavlov.ai/en/master/features/models/kbqa.html" target="_blank" rel="noopener">KBQA</a> system. For now we’ve already had an algriculture knowledge graph, we could use this to get some coarse planting advises ( say, “What crops are suitable for planting in Beijing?” or “ What is the optimum temperature for basil growth?”). </p>
 <p>Now we can start to grow a plant at home! After register on RPI based server, I can monitor my plant in realtime, some simple irrigation and ilumination strategy is already implemented on GreenBox, we just need to make sure everything works well in this tiny box. </p>
 <p>Once we get a good harvest, we can use this growing data as a success profile for this type of plant, the more profile we collect, the more intelligent strategy can we design. Based on large amout of data, we can get more strong fine-grained KBQA sytem, which may solve more complicated questions like “If I want to get a sweeter basil, what temperature range should I set ?” or “I want to save 20% of water used by irrigation, what ilumination strategy should I use ?”.</p>
-<h3 id="Future-Work"><a href="#Future-Work" class="headerlink" title="Future Work"></a>Future Work</h3><p>Now I’m growing basil using GreenBox, will try more plants this year. I think there are still many things can be implemented, such as designing more flexiable structure, reducing costs. My hardware costs for GreenBox version 1.0 is about 200$. </p>
+<h3 id="Future-Work"><a href="#Future-Work" class="headerlink" title="Future Work"></a>Future Work</h3><p>Now I’m growing basil using GreenBox, will try more plants this year. I think there are still many things can be implemented, such as designing more flexiable structure, reducing costs.</p>
 <center><br><img width="600" height="400" style="border-radius: 0.3125em;
 box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_vertical_farming.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
