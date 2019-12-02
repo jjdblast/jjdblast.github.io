@@ -16,11 +16,11 @@
 
   <!-- Title -->
   
-  <title>RoadBrain - Jiandong Jin</title>
+  <title>Road Brain - Jiandong Jin</title>
 
   <!--Description-->
   
-      <meta name="description" content="1. IntroductionRoadBrain is a proof of concept of digital twins in smart city, which could track and localize targets on road and reconstruct them in ">
+      <meta name="description" content="1. BackgroundThe main target of this project is to build a “digital twin” for a park, I started with building the 3d map of the park and using compute">
   
 
   <!--Author-->
@@ -30,7 +30,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="RoadBrain">
+      <meta property="og:title" content="Road Brain">
   
 
   <!--Open Graph Site Name-->
@@ -93,7 +93,7 @@
 			
   <div class="row">
     <div class="col-12">
-          <img class="img-fluid cover-image" src="/images/covers/cover_Road_Brain.jpg" alt="RoadBrain">
+          <img class="img-fluid cover-image" src="/images/covers/cover_Road_Brain.jpg" alt="Road Brain">
     </div>
   </div>
 
@@ -101,27 +101,40 @@
   <div class="col-12 col-lg-8 offset-lg-2 mt-4">
 
     <div class="post-page text-center my-4">
-      <h1>RoadBrain</h1>
+      <h1>Road Brain</h1>
       <hr>
       <span class="date">2018-10</span>
     </div>
 
-    <h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h3><p>RoadBrain is a proof of concept of digital twins in smart city, which could track and localize targets on road and reconstruct them in a digital world only based on video streams, in real time. </p>
-<center><img src="pipeline.png" width="80%" height="80%"></center>
+    <h3 id="1-Background"><a href="#1-Background" class="headerlink" title="1. Background"></a>1. Background</h3><p>The main target of this project is to build a “digital twin” for a park, I started with building the 3d map of the park and using computer vision method to detect vehicles running in it and provide positioning service.</p>
+<h3 id="2-Pipeline"><a href="#2-Pipeline" class="headerlink" title="2. Pipeline"></a>2. Pipeline</h3><p>I used visual SLAM method to build a dense 3D map for the park. Then I used Graph Neural Network(GNN) and feature-based tracking algorithm to detect and track car’s 3d pose from the monocular camera. Afterward, a simple calibration algorithm is implemented for locating the cars in the 3D map. </p>
+<center><br><iframe src="//player.bilibili.com/player.html?aid=77771671&page=1" width="100%" height="400" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">3D visual map of an intersection. Shanghai International Automobile City</div><br></center>
 
-<p>RoadBrain可以对城市交叉口的交通流情况（速度、流量）、驾驶行为（换道、转弯半径）等进行精细化的分析，RoadBrain通过实景可视化以及实时交通指标的采集，可以实现平行交通场景重建，有助于加深交通管理者对交通环境的理解，为交通管理者提供更好的决策支持。</p>
-<h3 id="2-Details"><a href="#2-Details" class="headerlink" title="2. Details"></a>2. Details</h3><p>系统底层输入是多路视频流，首先通过2D ROI检测找到视频帧中的行人和车辆；再将ROI送入关键点提取网络和3D提取网络。其中，行人关键点提取利用了OpenPose，车辆关键点提取网络利用了Occlusion Net，网络结构如下图所示：</p>
-<center><img src="keypoints_pipeline.png" width="90%" height="90%"></center>
+<p><br></p>
+<p>The whole pipeline can run in real-time. We can analyze the entire trajectory of a car even when it driving across multiple cameras. Since the whole system is camera-based, it can also work well in the underground parking lot, where the GPS service may not be available.</p>
+<center class="half"><br><img width="240" height="180" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./gaze1.jpg"><img width="240" height="180" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./gaze2.jpg"><img width="240" height="180" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./gaze3.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Gaze Vector</div><br></center>
 
-<p>对于3d行人关键点检测，我们使用的是现成的OpenPose框架，该框架可以得到精准、实时的人体关键点检测，其核心是一种利用Part Affinity Fields（PAFs）的自下而上的人体姿态估计算法。算法先通过CPM网络（如上图所示）回归出所有关键点位置，再通过PAF对不同人的关节进行划分，由于采用了自下而上的方式进行检测，因此可以实现人群关键点的快速检测。得到2D人体关键点后，我们使用MonoLoco模型得到3D关键点，该模型使用一种基于拉普拉斯分布损失函数（Laplace distribution loss）的轻量化神经网络预测3D位置信息和误差，模型如下图所示：</p>
-<center><img src="3dpose_pipeline.png" width="90%" height="90%"></center>
 
-<p>对于3d车辆关键点检测，我们使用了CMU提出的Occlusion Net，该框架大部分是自监督学习模型，有很强的可扩展性。模型先通过Mask-RCNN实现对目标可见关键点的识别；基于这些初始关键点，模型通过图编码网络（Graph Encoder Network）预测被遮挡的关键点的位置，以及图解码网络（Graph Decoder Network）从初始关键节点校正被遮挡的关键点位置；其中校正的损失函数是三焦向量误差（Trifocal tensor loss），训练时通过找到被遮挡关键点在不同角度下的对应点来提供自监督学习的样本；最后模型再将得到的2D关键点通过图网络投影到3D空间，同样使用自监督学习的重投影误差来估计车辆的3D形状和相机位姿。</p>
-<p>为了增加3d车辆关键点检测模型的鲁棒性，我们又引入了车辆3D信息估计模型作为关键点检测的补充。我们使用了国立清华大学提出的一种单目3D车辆检测和跟踪模型，引入了视频的时序信息来提供稳定的3D信息估计，流程如下图所示：</p>
-<center><img src="3dbox_pipeline.png" width="90%" height="90%"></center>
 
-<p>使用多种模型融合有助于提高我们车辆、行人关键点信息检测的鲁棒性；而引入了自监督学习、表示学习的思想可以使得我们系统可以适应多种监控环境。</p>
-<h3 id="3-DEMO"><a href="#3-DEMO" class="headerlink" title="3. DEMO"></a>3. DEMO</h3><p>敬请期待…</p>
+<h3 id="3-Future-Work"><a href="#3-Future-Work" class="headerlink" title="3. Future Work"></a>3. Future Work</h3><ul>
+<li><p>Now we only focus on vehicle tracking and localization, but Road Brain can also be extented to any targets (bicycle, pedestrian, …) on road and reconstruct them in a digital world, in real time. </p>
+</li>
+<li><p>We are also testing millimeter-wave radar to detect speed and direcction of target, those data can be combined with video data, and implement data fusion to imporve the accuracy and speed.</p>
+</li>
+</ul>
+<h3 id="4-Thanks-to"><a href="#4-Thanks-to" class="headerlink" title="4. Thanks to"></a>4. Thanks to</h3><ul>
+<li>We are also testing millimeter-wave radar to detect speed and direcction of target, those data can be combined with video data, and implement data fusion to imporve the accuracy and speed.</li>
+<li></li>
+</ul>
 
 
     
