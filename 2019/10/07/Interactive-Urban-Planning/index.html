@@ -110,25 +110,73 @@
 <center><br><iframe src="//player.bilibili.com/player.html?aid=77737966&page=1&high_quality=1" width="100%" height="400" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe><br><div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block; color: #999; padding: 2px;">Interactive Planning Demo</div><br></center>
 
 <p><br></p>
-<p>This project are highly inspired by <a href="https://www.media.mit.edu/projects/cityscope/overview/" target="_blank" rel="noopener"><strong>CityScope</strong></a> project, which is a concept for shared, interactive computation for urban planning, first developed by <a href="https://www.media.mit.edu/groups/city-science/overview/" target="_blank" rel="noopener">City Science</a> researchers from <a href="https://www.media.mit.edu/" target="_blank" rel="noopener">MIT Media Lab</a>. </p>
-<h3 id="Designing"><a href="#Designing" class="headerlink" title="Designing"></a>Designing</h3><p>We designed 3 different types of screens to control, monitor and interact with the community.</p>
+<p>This project is highly inspired by <a href="https://www.media.mit.edu/projects/cityscope/overview/" target="_blank" rel="noopener"><strong>CityScope</strong></a>, which is a concept for shared, interactive computation for urban planning, first developed by <a href="https://www.media.mit.edu/groups/city-science/overview/" target="_blank" rel="noopener">City Science</a> researchers from <a href="https://www.media.mit.edu/" target="_blank" rel="noopener">MIT Media Lab</a>. </p>
+<p>During my internship, I mainly focused on 3 tasks:</p>
 <ul>
-<li><strong>Interactive Screen</strong><ul>
-<li>A large touch screen to interact with community elements.</li>
+<li><strong>Designing</strong>: I designed community evaluation metrics related with transport, such as the travel isochronal circles, pedestrian comfort, road congestion, road health condition, traffic noises, etc.</li>
+<li><strong>Data Collecting &amp; Modelling</strong>: I crawled research data online and from social media to build corresponding evaluation models. I also built community’s 3D model by Mapbox.</li>
+<li><strong>Developing</strong>: I developed a multiple-screen platform to control, monitor and interact with the community elements and assess the impact of planning. </li>
 </ul>
-</li>
-<li><strong>Information Screen</strong><ul>
-<li>A wall-mounted screen to show related information.</li>
+<h3 id="Designing"><a href="#Designing" class="headerlink" title="Designing"></a>Designing</h3><p>I designed community evaluation metrics related with transport, such as the travel isochronal circles, pedestrian comfort, road congestion, road health condition, traffic noises, etc. I divided the indicators related with transport into several categories, and define the operation type on the Interaction Screen.</p>
+<center><br><img width="700" height="300" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./framework.png"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block; color: #999; padding: 2px;">Framework of Transportation Part</div><br></center>
+
+<center><br><img width="550" height="300" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./interact_screen.png"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block; color: #999; padding: 2px;">Interaction Screen, with different operation modes.</div><br></center>
+
+<p><br></p>
+<h3 id="Data-Collecting-amp-Modelling"><a href="#Data-Collecting-amp-Modelling" class="headerlink" title="Data Collecting &amp; Modelling"></a>Data Collecting &amp; Modelling</h3><p>I collected multi-source data for building a evaluation model.</p>
+<ul>
+<li>Shanghai Taxi GPS data (public dataset)</li>
+<li>Shanghai Shapefile data (public dataset)</li>
+<li>Geo-tagged check-in data (crawled from Weibo)</li>
+<li>POIs data (crawled from Gaode Map)</li>
+<li>Traffic Flow Heatmap data (crawled from Gaode Map)</li>
+<li>Streetview data (request from Baidu API)</li>
 </ul>
-</li>
-<li><strong>AR Screen</strong><ul>
-<li>An iPad Pro (other mobile device which can use Chrome also works well) to show AR scene on <strong>Interactive Screen</strong>.</li>
+<p>I used Postgres Database to store and manage geo-tagged data, </p>
+<center class="half"><br><img width="350" height="200" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./pois.jpg"><img width="350" height="200" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./buildings.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">POIs &amp; Buildings data</div><br></center>
+
+<p><br></p>
+<p>Then I developed some models to analyze the relation between elements and corresponding metrics. Such as calculating isochronal circles by POIs data to evaluate walking accessibility, designing cluster model by taxi trajecories data to evaluate congestion. </p>
+<p>I also used Mapbox to display 3D model for Chifeng Road and nearby living area. Since the 3D map data provided by Mapbox is not enough in Shanghai, I had to crawl Shanghai Shapefile with floor data and convert it to 3D building model which is adapted to Mapbox.</p>
+<center class="half"><br><img width="320" height="200" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./building_models.jpg"><img width="380" height="200" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./info_screen.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">3D model rendered on Monitor Screen</div><br></center>
+
+<p><br></p>
+<h3 id="Developing"><a href="#Developing" class="headerlink" title="Developing"></a>Developing</h3><p>We designed 3 different types of screens to control, monitor and interact with the community. </p>
+<ul>
+<li><strong>Interactive Screen</strong>: A large touch screen to interact with community elements.</li>
+<li><strong>Monitor Screen</strong>: A wall-mounted screen to show related information.</li>
+<li><strong>Explore Screen</strong>: An iPad Pro (or other mobile devices) to show AR scene linked with Interactive Screen.</li>
 </ul>
-</li>
+<p>I used Mapbox and AR.js to build the Explore Screen, we can explore the AR content connected with community through this screen.</p>
+<center class="half"><br><img width="500" height="300" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./interact_screen.jpg"><img width="200" height="300" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./ar_screen.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Interact, Monitor and Explore</div><br></center>
+
+<p><br></p>
+<p>I developed the multiple-screen platform by Javascript, so that all the screens can be transferred to other devices easily, which could make the exploration “portable”.</p>
+<center><br><iframe src="//player.bilibili.com/player.html?aid=77827316&page=1&high_quality=1" width="100%" height="400" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe><br><div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block; color: #999; padding: 2px;">Interactive Planning Demo</div><br></center>
+
+<p><br></p>
+<h3 id="Future-Works"><a href="#Future-Works" class="headerlink" title="Future Works"></a>Future Works</h3><ul>
+<li>We want to add more evaluation metrics related with community design and management such as plant area, air quality and odour level. </li>
+<li>We are also planning to collect more data to refine our evaluation model.</li>
 </ul>
-<h3 id="Developing"><a href="#Developing" class="headerlink" title="Developing"></a>Developing</h3><p>I designed technical architecture with my partner <a href="http://www.linkedin.com/in/fuwen-deng-93a7a0187" target="_blank" rel="noopener">Fuwen Deng</a>, </p>
-<center><br><img width="400" height="300" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_greenbox.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block; color: #999; padding: 2px;">Interactive Planning Demo</div><br></center>
+
 
     
 
