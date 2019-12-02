@@ -20,7 +20,7 @@
 
   <!--Description-->
   
-      <meta name="description" content="A “Senseable” Way To PlantGrowing plants all by yourself can be one of the most rewarding things you’ll ever do. For harvesting, we need plenty of tim">
+      <meta name="description" content="BackgroundIn this work, I cooperated with my partner Fuwen Deng) and focused on the application of reinforcement learning to the ramp metering problem">
   
 
   <!--Author-->
@@ -106,130 +106,43 @@
       <span class="date">2019-01</span>
     </div>
 
-    <h3 id="A-“Senseable”-Way-To-Plant"><a href="#A-“Senseable”-Way-To-Plant" class="headerlink" title="A “Senseable” Way To Plant"></a>A “Senseable” Way To Plant</h3><p><strong>Growing</strong> plants all by yourself can be one of the most rewarding things you’ll ever do. For harvesting, we need plenty of time and experience, so how about growing plants under the guidance of AI? </p>
-<p>The key points of designing an AI planting platform are <strong>Sensing</strong> and <strong>Inferencing</strong>. <strong>Sensing</strong> means to monitor and digitalize the status of plants; <strong>Inferencing</strong> means to make a series of decisions, including irrigation fertilization, and illumination. </p>
-<p>GreenBox is designed to solve the <strong>Sensing</strong> problem, it is a tabletop-sized and easy-to-build planting platform with smart robotic systems to control the environment, climate, and monitor the status of the plant growth; For solving the <strong>Inferencing</strong> problem, I also designed GreenBox-KG, which is a knowledge graph built by data collected from GreenBox to make better decisions in the planting process.</p>
-<center><br><iframe src="//player.bilibili.com/player.html?aid=73227743&cid=125252275&page=1" width="100%" height="400" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    <h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><p>In this work, I cooperated with my partner <a href="[www.linkedin.com/in/fuwen-deng-93a7a0187](http://www.linkedin.com/in/fuwen-deng-93a7a0187">Fuwen Deng</a>) and focused on the application of reinforcement learning to the ramp metering problem. We proposed a novel ramp metering algorithm embedding multi-agent deep reinforcement learning techniques. We also built up a simulation platform based on SUMO to simplify the implementation of the algorithm.</p>
+<center><br><img width="400" height="300" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./RampMetering.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">GreenBox Demo Video</div><br></center>
+padding: 2px;">Ramp Metering</div><br></center>
+
+<h3 id="Details"><a href="#Details" class="headerlink" title="Details"></a>Details</h3><p>We used Proximal Policy Optimization or PPO as the reinforcement learning framework. The algorithm adopts a classical Actor-Critic framework which combines the strong points of policy-based and value-based methods, and imports the Kullback–Leibler divergence to adjust the update rate of the policy function automatically for good adaptability. </p>
+<center><br><img width="700" height="300" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./Methodology.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Methodology</div><br></center>
 
 <p><br></p>
-<h3 id="GreenBox"><a href="#GreenBox" class="headerlink" title="GreenBox"></a>GreenBox</h3><p>The main shell of GreenBox is a tiny greenhouse equipped with multiple environment sensors, includes CO2, air temperature, humidity, root-zone temperature, and electrical conductivity, sensors’s data will be collected and analyzed on Raspberry Pi. </p>
+<p>We also developed a simulation platform to simplify the implementation of the algorithm. The ML framework to implement RL algorithms is keras + tensorflow, the SUMO works as traffic simulator, and Traci is used for the communication between python scripts (server) and SUMO simulator (client). </p>
+<center><br><img width="700" height="300" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./Platform.jpeg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Simulation Platform</div><br></center>
+
+<p><br></p>
+<p>A set of simulation experiments – encompassing both single and multi-ramp scenarios with various traffic demand profiles – are conducted</p>
 <center><br><img width="400" height="300" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_greenbox.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./Experiments.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">GreenBox Shell</div><br></center>
+padding: 2px;">Experiments</div><br></center>
 
-<p>Here’s all of sensors used in GreenBox:</p>
-<ul>
-<li>Environment sensors<ul>
-<li>air tempreture &amp; humdity: <a href="https://www.dfrobot.com/product-1606.html" target="_blank" rel="noopener">BME280 Environmental Sensor</a></li>
-<li>carbon dioxide: <a href="https://www.dfrobot.com/product-1549.html" target="_blank" rel="noopener">Infrared CO2 Sensor</a></li>
-</ul>
-</li>
-<li>Root-zone sensors<ul>
-<li>soil tempreture &amp; humdity &amp; EC: <a href="https://renkeer.com/product/measurement/soil.html" target="_blank" rel="noopener">RS485 Soil Sensor</a></li>
-<li>soil PH: <a href="http://www.dingpeikj.com/html/products/ShowProduct-271.html" target="_blank" rel="noopener">RS485 Soil PH sensor</a></li>
-</ul>
-</li>
-<li>Light sensors<ul>
-<li>spectrum sensors: <a href="https://www.sparkfun.com/products/15050" target="_blank" rel="noopener">SparkFun Triad Spectroscopy Sensor</a></li>
-</ul>
-</li>
-<li>Other sensors or controllers<ul>
-<li>arduino uno: </li>
-<li>raspberry pi 3b+: </li>
-<li>camera: <a href="https://detail.tmall.com/item.htm?spm=a1z10.3-b.w4011-3257853002.44.500f5c7eYommQG&amp;id=539108285676&amp;rn=6de0d529f97871f4097312f9db126673&amp;abbucket=4" target="_blank" rel="noopener">RPi IR-CUT Camera</a></li>
-<li>water pumps, led strips are DIY</li>
-</ul>
-</li>
-</ul>
-<center class="half"><br><img width="300" height="250" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_AS1812x.jpg"><img width="400" height="250" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_AS7265x.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+<p><br></p>
+<p>Comparing with the state-of-the-practice ramp metering methods, the simulation results demonstrate that the proposed DRL-based algorithm outperforms in a comprehensive evaluation index considering mainstream speed at bottleneck and queue size on ramp</p>
+<h3 id="Future-Work-Simulation-as-a-Service"><a href="#Future-Work-Simulation-as-a-Service" class="headerlink" title="Future Work - Simulation as a Service"></a>Future Work - Simulation as a Service</h3><p>We are developing a simulation testbed for urban traffic signal control of large scale intersection groups. The final target of this project is providing an open-source Python package to embed multi-agent reinforcement learning algorithms for large scale transportation management, also with a Web GUI for visualization.</p>
+<center><br><iframe src="//player.bilibili.com/player.html?aid=77813190&page=1&high_quality=1" width="100%" height="400" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">SparkFun Triad Spectroscopy Sensor</div><br></center>
-
-<p>In order to analyze fine-grained illumination condition, we use spectrum sensors to collect 18 channels spectral response of environment light inside the box.</p>
-<center class="half"><br><img width="350" height="250" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_LED.jpg"><img width="350" height="250" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_LED_control.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
-display: inline-block;
-color: #999;
-padding: 2px;">GreenBox Light Unit</div><br></center>
-
-<p>For light control, I use 2 WS2811B 16x16 LED matrix strips to build light unit, which could also work as a heater. The LED matrix could be controlled element-wise by arduino.</p>
-<center class="half"><br><img width="350" height="250" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_sensors.jpg"><img width="350" height="250" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_fans.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
-display: inline-block;
-color: #999;
-padding: 2px;">Sensors &amp; “Air Pump”</div><br></center>
-
-
-
-<center class="half"><br><img width="250" height="250" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_soil_sensor.jpg"><img width="450" height="250" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_soil.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
-display: inline-block;
-color: #999;
-padding: 2px;">Soil Sensor &amp; Water Pump</div><br></center>
-
-
-
-<p>For irigation, a small water pump will drill water from extra water bins once the soil humdity drop below the red line. The Soild Sensor is placed under the soil, other sensors are fixed around the box. Also, I use a tiny raspberry fans as a low-cost air pump.</p>
-<center><br><img width="600" height="300" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_superset.jpg"><br><img width="600" height="300" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_superset2.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
-display: inline-block;
-color: #999;
-padding: 2px;">GreenBox Data Visualization</div><br></center>
-
-<p>I use raspberry pi 3b+ to collect sensors’s data and comunicate with arduino, the actual control task is done by arduino. In order to monitor and analysis the whole system, I wrote a service on RPI to store all sensors’s data in <a href="https://sqlite.org/index.html" target="_blank" rel="noopener">SQLite DB</a> in realtime, then deploy <a href="https://superset.incubator.apache.org/" target="_blank" rel="noopener">Apache Superset</a> to provide data management and visulization, all softwares and servcies are running on RPI, so it’s pretty energy efficient. It’s cost is also affordable for student, now my hardware costs for GreenBox version 1.0 is about 200$. </p>
-<h3 id="GreenBox-KG"><a href="#GreenBox-KG" class="headerlink" title="GreenBox-KG"></a>GreenBox-KG</h3><p>Since I haven’t collect enough growing data when I started this project, so a solution for <a href="https://en.wikipedia.org/wiki/Cold_start_(computing" target="_blank" rel="noopener">cold-starting</a>) is  to crawl open-source agriculture common knowledge data, such as wikipedia. In this project, I found <a href="http://www.baike.com/" target="_blank" rel="noopener">hudong baike</a> is very useful, which is a chinese version wikipedia contains many domain knowledge, I crawled agriculture related subjects from hudong baike, table below shows some samples.</p>
-<center><br><img width="750" height="150" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_baike_table.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
-display: inline-block;
-color: #999;
-padding: 2px;">Hudong Baike Sample Records</div><br></center>
-
-<p>With those records, we can find the suitable climate for each crops/plants growing, which means we can also get a coarse range of suitable temperature for crops/plants growth. For those crops/plants only have growing suitable regions, we need match the climate with the regions.</p>
-<center><br><img width="600" height="400" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_climates.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
-display: inline-block;
-color: #999;
-padding: 2px;">Global Climate Types</div><br></center>
-
-<p>So I crawled climate type of regions from <a href="[https://en.wikipedia.org/wiki/K%C3%B6ppen_climate_classification](https://en.wikipedia.org/wiki/Köppen_climate_classification">Köppen climate classification</a>), such as Beijing is subtropical monsoon climate, which means it’s has a qualifying average temperature in the warmest month of greater than 22 °C. </p>
-<center><br><img width="600" height="400" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_neo4j.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
-display: inline-block;
-color: #999;
-padding: 2px;">Building Knowledge Graph in Neo4J DB</div><br></center>
-
-<p>After simple data preprocessing, all data was saved into <a href="https://neo4j.com/" target="_blank" rel="noopener">Neo4J DB</a>. A simple knowledge graph can be built using Neo4J , I also implemented a <a href="http://docs.deeppavlov.ai/en/master/features/models/kbqa.html" target="_blank" rel="noopener">KBQA</a> system. For now we’ve already had an algriculture knowledge graph, we could use this to get some coarse planting advises ( say, “What crops are suitable for planting in Beijing?” or “ What is the optimum temperature for basil growth?”). </p>
-<p>Now we can start to grow a plant at home! After register on RPI based server, I can monitor my plant in realtime, some simple irrigation and ilumination strategy is already implemented on GreenBox, we just need to make sure everything works well in this tiny box. </p>
-<p>Once we get a good harvest, we can use this growing data as a success profile for this type of plant, the more profile we collect, the more intelligent strategy can we design. Based on large amout of data, we can get more strong fine-grained KBQA sytem, which may solve more complicated questions like “If I want to get a sweeter basil, what temperature range should I set ?” or “I want to save 20% of water used by irrigation, what ilumination strategy should I use ?”.</p>
-<h3 id="Future-Work"><a href="#Future-Work" class="headerlink" title="Future Work"></a>Future Work</h3><p>Now I’m growing basil using GreenBox, will try more plants this year. I think there are still many things can be implemented, such as designing more flexiable structure, reducing costs.</p>
-<center><br><img width="600" height="400" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./fig_vertical_farming.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
-display: inline-block;
-color: #999;
-padding: 2px;">Vertical Farming Unit</div><br></center>
-
-<p>I also want to do more researchs on energy saving, since I think an energy-saving planting strategy will contribute to vertical farming, which is suffering waste of energy.</p>
-<h3 id="Thanks-To"><a href="#Thanks-To" class="headerlink" title="Thanks To"></a>Thanks To</h3><p>This project is highly inspired by MIT <a href="https://wiki.openag.media.mit.edu/openag" target="_blank" rel="noopener">OpenAg™</a>  <a href="https://wiki.openag.media.mit.edu/pfc_edu_3.0" target="_blank" rel="noopener">Personal Food Computer</a>.</p>
-<ul>
-<li><p><a href="https://www.media.mit.edu/groups/open-agriculture-openag/overview/" target="_blank" rel="noopener">https://www.media.mit.edu/groups/open-agriculture-openag/overview/</a></p>
-</li>
-<li><p><a href="http://www.ipcc-data.org/maps/" target="_blank" rel="noopener">http://www.ipcc-data.org/maps/</a></p>
-</li>
-<li><a href="http://www.fao.org/nr/climpag/globgrids/KC_classification_en.asp" target="_blank" rel="noopener">http://www.fao.org/nr/climpag/globgrids/KC_classification_en.asp</a></li>
-</ul>
-
+padding: 2px;">City Grid Web GUI</div><br></center>
 
     
 
