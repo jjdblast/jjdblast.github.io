@@ -107,33 +107,50 @@
     </div>
 
     <h3 id="1-Background"><a href="#1-Background" class="headerlink" title="1. Background"></a>1. Background</h3><p>The main target of this project is to build a “digital twin” for a park, I started with building the 3d map of the park and using computer vision method to detect vehicles running in it and provide positioning service.</p>
+<center><br><img width="800" height="400" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./webapp2.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Road Brain Demo</div><br></center>
+
 <h3 id="2-Pipeline"><a href="#2-Pipeline" class="headerlink" title="2. Pipeline"></a>2. Pipeline</h3><p>I used visual SLAM method to build a dense 3D map for the park. Then I used Graph Neural Network(GNN) and feature-based tracking algorithm to detect and track car’s 3d pose from the monocular camera. Afterward, a simple calibration algorithm is implemented for locating the cars in the 3D map. </p>
+<p>I splitted the park into several intersections, each intersection contains 1-2 monocular survilience cameras. We collect geo-tagged images of each intersection, and using Structure-from-Motion method to build 3D reconstruction map.</p>
 <center><br><iframe src="//player.bilibili.com/player.html?aid=77771671&page=1" width="100%" height="400" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">3D visual map of an intersection. Shanghai International Automobile City</div><br></center>
+padding: 2px;">3D reconstrcution map of an intersection. Shanghai International Automobile City</div><br></center>
 
 <p><br></p>
-<p>The whole pipeline can run in real-time. We can analyze the entire trajectory of a car even when it driving across multiple cameras. Since the whole system is camera-based, it can also work well in the underground parking lot, where the GPS service may not be available.</p>
-<center class="half"><br><img width="240" height="180" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./gaze1.jpg"><img width="240" height="180" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./gaze2.jpg"><img width="240" height="180" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./gaze3.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+<p>I test some detection models, such as YOLO V3 and SSD, and finally use a keypoints-based model to detect the car keypoints, then project the vehicle into the reconstrcution map by camera matrix calibrated before.</p>
+<center class="half"><br><img width="350" height="200" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./view1_detail.jpg"><img width="350" height="200" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./view2_detail.jpg"><img width="350" height="200" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./view.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 2px;">Gaze Vector</div><br></center>
+padding: 2px;">Vehicle Keypoints Detection &amp; Localization</div><br></center>
 
+<p><br></p>
+<p>The whole pipeline can run in real-time. We can analyze the entire trajectory of a car when it driving across multiple cameras. Since the whole system is camera-based, it can also work well in the underground parking lot, where the GPS service may not be available. The tracking pipeline is the same, but the re-identification model should be enhanced since the occlusion of the car.  We use plate number combined with feature-based re-identification model (Deep SORT) to make sure the vehicle could be tracked across different cameras.</p>
+<center class="half"><br><img width="350" height="200" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./CA1_point.png"><img width="350" height="200" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./CA2_point.png"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Underground Calibration</div><br></center>
 
+<p><br></p>
+<center class="half"><br><img width="350" height="200" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./underground1.jpg"><img width="350" height="200" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./underground2.png"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Underground Tracking and ReID Track</div><br></center>
 
+<p><br></p>
 <h3 id="3-Future-Work"><a href="#3-Future-Work" class="headerlink" title="3. Future Work"></a>3. Future Work</h3><ul>
-<li><p>Now we only focus on vehicle tracking and localization, but Road Brain can also be extented to any targets (bicycle, pedestrian, …) on road and reconstruct them in a digital world, in real time. </p>
-</li>
-<li><p>We are also testing millimeter-wave radar to detect speed and direcction of target, those data can be combined with video data, and implement data fusion to imporve the accuracy and speed.</p>
-</li>
-</ul>
-<h3 id="4-Thanks-to"><a href="#4-Thanks-to" class="headerlink" title="4. Thanks to"></a>4. Thanks to</h3><ul>
-<li>We are also testing millimeter-wave radar to detect speed and direcction of target, those data can be combined with video data, and implement data fusion to imporve the accuracy and speed.</li>
-<li></li>
+<li><strong>Multi-classes Tracking</strong>: Now we only focus on vehicle tracking and localization, this pipeline can also be extented to any targets on road (bicycle, pedestrian) and reconstruct them in a digital world. </li>
+<li><strong>Data Fusion</strong>: We are also testing millimeter-wave radar to detect speed and direction of target, the video camera data and radar data can be merged to imporve the accuracy and speed.</li>
 </ul>
 
 
