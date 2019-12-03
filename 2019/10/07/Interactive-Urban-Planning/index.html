@@ -93,7 +93,7 @@
 			
   <div class="row">
     <div class="col-12">
-          <img class="img-fluid cover-image" src="/images/covers/cover_Interactive_Planning.png" alt="Interactive Urban Planning">
+          <img class="img-fluid cover-image" src="/images/covers/cover_Interactive_Planning.jpg" alt="Interactive Urban Planning">
     </div>
   </div>
 
@@ -134,17 +134,18 @@ box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src
 <li>Traffic Flow Heatmap data (crawled from Gaode Map)</li>
 <li>Streetview data (request from Baidu API)</li>
 </ul>
-<p>I used Postgres Database to store and manage geo-tagged data, </p>
+<p>I used Postgres Database to store and manage geo-tagged data. The data contains about 641,140 POIs from Gaode Map and all the node data from OSM.</p>
 <center class="half"><br><img width="350" height="200" style="border-radius: 0.3125em;
 box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./pois.jpg"><img width="350" height="200" style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./buildings.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./buildings.jpg"><img width="350" height="200" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./database.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
 padding: 2px;">POIs &amp; Buildings data</div><br></center>
 
 <p><br></p>
 <p>Then I developed some models to analyze the relation between elements and corresponding metrics. Such as calculating isochronal circles by POIs data to evaluate walking accessibility, designing cluster model by taxi trajecories data to evaluate congestion. </p>
-<p>I also used Mapbox to display 3D model for Chifeng Road and nearby living area. Since the 3D map data provided by Mapbox is not enough in Shanghai, I had to crawl Shanghai Shapefile with floor data and convert it to 3D building model which is adapted to Mapbox.</p>
+<p>I also used Mapbox to display 3D model of Chifeng Road and nearby living area. Since the 3D map data provided by Mapbox is not available in Shanghai, I had to manually build the 3D building model by Shapefile with floor data and load it into Mapbox for rendering.</p>
 <center class="half"><br><img width="320" height="200" style="border-radius: 0.3125em;
 box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./building_models.jpg"><img width="380" height="200" style="border-radius: 0.3125em;
 box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./info_screen.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -159,7 +160,7 @@ padding: 2px;">3D model rendered on Monitor Screen</div><br></center>
 <li><strong>Monitor Screen</strong>: A wall-mounted screen to show related information.</li>
 <li><strong>Explore Screen</strong>: An iPad Pro (or other mobile devices) to show AR scene linked with Interactive Screen.</li>
 </ul>
-<p>I used Mapbox and AR.js to build the Explore Screen, we can explore the AR content connected with community through this screen.</p>
+<p>I used Mapbox and AR.js to build the Explore Screen, which could explore the AR content connected with community.</p>
 <center class="half"><br><img width="500" height="300" style="border-radius: 0.3125em;
 box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./interact_screen.jpg"><img width="200" height="300" style="border-radius: 0.3125em;
 box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./ar_screen.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
