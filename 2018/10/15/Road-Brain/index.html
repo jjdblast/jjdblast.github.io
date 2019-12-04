@@ -20,7 +20,7 @@
 
   <!--Description-->
   
-      <meta name="description" content="1. BackgroundThe main target of this project is to build a “digital twin” for a park, I started with building the 3d map of the park and using compute">
+      <meta name="description" content="1. BackgroundThis summer I joined Research Team for Smart Transport Emerging computing and Perception for an engineering project internship, instructe">
   
 
   <!--Author-->
@@ -106,7 +106,7 @@
       <span class="date">2018-10</span>
     </div>
 
-    <h3 id="1-Background"><a href="#1-Background" class="headerlink" title="1. Background"></a>1. Background</h3><p>The main target of this project is to build a “digital twin” for a park, I started with building the 3d map of the park and using computer vision method to detect vehicles running in it and provide positioning service.</p>
+    <h3 id="1-Background"><a href="#1-Background" class="headerlink" title="1. Background"></a>1. Background</h3><p>This summer I joined <a href="http://www.steps.group/" target="_blank" rel="noopener">Research Team for Smart Transport Emerging computing and Perception</a> for an engineering project internship, instructed by Professor <a href="https://tjjt.tongji.edu.cn/?classid=9338&amp;j_id=103&amp;t=show" target="_blank" rel="noopener">Yuchuan Du</a>. The main purpose of this project is to build a “digital twin” for the <a href="https://goo.gl/maps/pvQpBHwkkAUVGet6A" target="_blank" rel="noopener"> Inovation Port of Shanghai Automobile City</a>, and provide  a monitor platform and postioning service for the driveless vehicle tested in the park.</p>
 <center><br><img width="800" height="400" style="border-radius: 0.3125em;
 box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./webapp2.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -114,15 +114,16 @@ color: #999;
 padding: 2px;">Road Brain Demo</div><br></center>
 
 <p><br></p>
-<h3 id="2-Pipeline"><a href="#2-Pipeline" class="headerlink" title="2. Pipeline"></a>2. Pipeline</h3><p>I used visual SLAM method to build a dense 3D map for the park. Then I used Graph Neural Network(GNN) and feature-based tracking algorithm to detect and track car’s 3d pose from the monocular camera. Afterward, a simple calibration algorithm is implemented for locating the cars in the 3D map. </p>
-<p>I splitted the park into several intersections, each intersection contains 1-2 monocular survilience cameras. We collect geo-tagged images of each intersection, and using Structure-from-Motion method to build 3D reconstruction map.</p>
+<h3 id="2-Pipeline"><a href="#2-Pipeline" class="headerlink" title="2. Pipeline"></a>2. Pipeline</h3><p>The whole pipeline of this project is camera-based. I started with building the 3D reconstruction map of the park and using computer vision method to detect and track vehicles.</p>
+<p>I splitted the park into several intersections, each intersection contains 1-2 monocular survilience cameras. We collected large amount of geo-tagged images captured by a LadyBug camera for each intersection, and then used Structure-from-Motion method to build 3D reconstruction map.</p>
+<p>Based on video streams collected by surveillance cameras, I implemented CNN based detection and feature-based tracking algorithm to detect and track car’s 3d pose. Afterward, a simple calibration algorithm is implemented for locating the cars in the 3D map. </p>
 <center><br><iframe src="//player.bilibili.com/player.html?aid=77771671&page=1&high_quality=1" width="100%" height="400" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
 padding: 2px;">3D reconstrcution map of an intersection. Shanghai International Automobile City</div><br></center>
 
 <p><br></p>
-<p>I test some detection models, such as YOLO V3 and SSD, and finally use a keypoints-based model to detect the car keypoints, then project the vehicle into the reconstrcution map by camera matrix calibrated before.</p>
+<p>I tested some detection models, such as YOLO V3 and SSD, and finally used a keypoints-based GNN (Graph neural network) model to detect the car keypoints, then projected the vehicle keypoints into the reconstrcution map by camera matrix calibrated before.</p>
 <center class="half"><br><img width="350" height="200" style="border-radius: 0.3125em;
 box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./view1_detail.jpg"><img width="350" height="200" style="border-radius: 0.3125em;
 box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./view2_detail.jpg"><img width="350" height="200" style="border-radius: 0.3125em;

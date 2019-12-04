@@ -20,7 +20,7 @@
 
   <!--Description-->
   
-      <meta name="description" content="Percieving the cityGrowing plants all by yourself can be one of the most rewarding things you’ll ever do. For harvesting, we need plenty of time and e">
+      <meta name="description" content="BackgroundThis project centers on collecting and analyzing urban data by bike-sharing.  We designed Bike Rover, a tiny low-power device which integrat">
   
 
   <!--Author-->
@@ -106,13 +106,44 @@
       <span class="date">2019-10</span>
     </div>
 
-    <h3 id="Percieving-the-city"><a href="#Percieving-the-city" class="headerlink" title="Percieving the city"></a>Percieving the city</h3><p><strong>Growing</strong> plants all by yourself can be one of the most rewarding things you’ll ever do. For harvesting, we need plenty of time and experience, so how about growing plants under the guidance of AI? </p>
-<p>The key points of designing an AI planting platform are <strong>Sensing</strong> and <strong>Inferencing</strong>. <strong>Sensing</strong> means to monitor and digitalize the status of plants; <strong>Inferencing</strong> means to make a series of decisions, including irrigation fertilization, and illumination. </p>
-<p>GreenBox is designed to solve the <strong>Sensing</strong> problem, it is a tabletop-sized and easy-to-build planting platform with smart robotic systems to control the environment, climate, and monitor the status of the plant growth; For solving the <strong>Inferencing</strong> problem, I also designed GreenBox-KG, which is a knowledge graph built by data collected from GreenBox to make better decisions in the planting process.</p>
-<h3 id="Collecting-by-Social-Media"><a href="#Collecting-by-Social-Media" class="headerlink" title="Collecting by Social Media"></a>Collecting by Social Media</h3><p>We also tried to use social media, link.</p>
-<h3 id="Collecting-by-Smell-Rover"><a href="#Collecting-by-Smell-Rover" class="headerlink" title="Collecting by Smell Rover"></a>Collecting by Smell Rover</h3><p>We plants all by yourself can be one of the most rewarding things you’ll ever do. For harvesting, we need plenty of time and experience, so how about growing plants under the guidance of AI? </p>
-<h3 id="Future-Works"><a href="#Future-Works" class="headerlink" title="Future Works"></a>Future Works</h3><p><strong>Growing</strong> plants all by yourself can be one of the most rewarding things you’ll ever do. For harvesting, we need plenty of time and experience, so how about growing plants under the guidance of AI? </p>
-<h3 id="Thanks-To"><a href="#Thanks-To" class="headerlink" title="Thanks To"></a>Thanks To</h3><p><strong>Growing</strong> plants all by yourself can be one of the most rewarding things you’ll ever do. For harvesting, we need plenty of time and experience, so how about growing plants under the guidance of AI? </p>
+    <h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><p>This project centers on collecting and analyzing urban data by bike-sharing.  We designed Bike Rover, a tiny low-power device which integrates several types of environmental sensors. We are also planning to mount those sensors on some bikes and collect city-wise environment data.</p>
+<p>This project is inspired by <a href="http://goodcitylife.org/smellymaps/index.php" target="_blank" rel="noopener">Smelly Map</a> by <a href="http://goodcitylife.org/" target="_blank" rel="noopener">GoodCityLife</a> , the <a href="http://goodcitylife.org/smellymaps/index.php" target="_blank" rel="noopener">Smelly Map</a> analyzed geo-tagged smell-related Twitter data and visualize them on map. We want to follow this research in a different view, instead of analyzing text data, we can also collect data by sensors, which is more objective than human feelings. We can also compare the human feelings about the environment (which is mined by Weibo or Twitter) with the real data collected by sensors, to measure the difference between subjective feelings and objective situations.</p>
+<h3 id="Sensors"><a href="#Sensors" class="headerlink" title="Sensors"></a>Sensors</h3><p>Here’s some of sensor we used: </p>
+<center class="half"><br><img width="340" height="200" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./rover.png"><img width="360" height="200" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./rover_apart.png"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Bike Rover</div><br></center>
+
+<p><br></p>
+<ul>
+<li>DFRobot PM2.5 Air Quality sensor</li>
+<li>MQ136 H2S sensor</li>
+<li>MQ137 NH3 sensor</li>
+<li>MS1100 VOCs sensor</li>
+<li>Temperature&amp;Humidity sensor</li>
+</ul>
+<p>I also intergrated NB-IoT module to support data uploading, so that we can collect and analyze data remotely. The whole device can powered by a 2000 mAh solar battery. Here’s BOM.</p>
+<center class="half"><br><img width="300" height="500" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./BOM.png"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">BOM of Bike Rover</div><br></center>
+
+<p><br></p>
+<h3 id="Social-Media"><a href="#Social-Media" class="headerlink" title="Social Media"></a>Social Media</h3><p>I used the pipeline proposed by Smelly Map. I crawled geo-tagged Weibo data from 09/2019 to 10/2019 in Shanghai, extracted smell-related data, and plotted a Smelly Map in Shanghai. </p>
+<center class="half"><br><img width="700" height="450" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./smellscape.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Smelly Map in Shanghai</div><br></center>
+
+<p><br></p>
+<h3 id="Future-Works"><a href="#Future-Works" class="headerlink" title="Future Works"></a>Future Works</h3><ul>
+<li>This project is still on-going, I just developed a prototype device, still need to add housing and fixtures components. </li>
+<li>We are planning to analyze more kind of feelings from Weibo dataset, such as living condition, air quality, noise, green level and so on.</li>
+</ul>
 
 
     
