@@ -20,7 +20,7 @@
 
   <!--Description-->
   
-      <meta name="description" content="BackgroundIn this project, I cooperated with my partner Fuwen Deng. We designed a large scale crowd evacuation strategy, which could take advantage of">
+      <meta name="description" content="BackgroundIn this project, we designed a large scale crowd forecasting model, with an evacuation strategy which could take advantage of the urban tran">
   
 
   <!--Author-->
@@ -106,9 +106,49 @@
       <span class="date">2018-04</span>
     </div>
 
-    <h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><p>In this project, I cooperated with my partner <a href="www.linkedin.com/in/fuwen-deng-93a7a0187">Fuwen Deng</a>. We designed a large scale crowd evacuation strategy, which could take advantage of the urban transit system effectively.</p>
-<p>We collected large amount of multi-source data, for example taxi trajectory, geo-tagged Weibo (the Chinese Twitter) check-ins, metro card records and OSM road network data.</p>
+    <h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><p>In this project, we designed a large scale crowd forecasting model, with an evacuation strategy which could take advantage of the urban transit system effectively. I cooperated with my partner Fuwen Deng. I was mainly responsible for data crawling and modeling. I designed the forecasting model and developed a set of visualization web-apps to present our results.</p>
+<p>We collected large amount of multi-source data, for example geo-tagged Weibo (the Chinese Twitter) check-ins, taxi trajectory and metro card records (which is public dataset provided by <a href="http://soda.data.sh.gov.cn/" target="_blank" rel="noopener">Shanghai Open Data Apps</a>) , and OSM road network data.</p>
 <p>After pre-process and data fusion, we analyze the features of crowd and build a model to predict crowd flow dynamically. We also design an effective strategy to evacuate crowd rapidly based on urban transit system.</p>
+<center><br><iframe src="//player.bilibili.com/player.html?aid=78616052&page=1&high_quality=1" width="100%" height="500" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe><br><div style="color:orange; border-bottom: 1px solid #d9d9d9; display: inline-block; color: #999; padding: 2px;">Crowd Dynamic Forecast Demo</div><br></center>
+
+<p><br></p>
+<h3 id="Forecast"><a href="#Forecast" class="headerlink" title="Forecast"></a>Forecast</h3><p>We splitted Shanghai into 1km * 1km size grids, analyzed taxi OD routes and check-in data to summarize the inflow and outflow of each grids, then use those data to train a spatial-temporal model. </p>
+<p>We proposed a deep-learning-based approach, which combined the spatial, temporal and semantic properties of crowd traffic, to collectively forecast the inflow and outflow of crowds in every region of a city.</p>
+<center class="half"><br><img width="600" height="300" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./model1.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Deep Multi-View Spatial-Temporal Network</div><br></center>
+
+<p><br></p>
+<p>We also developed a web-app to show the predicted crowd amount of each grid, this web-app can also visualize the crowd flow trend of the entire city.</p>
+<center class="half"><br><img width="340" height="200" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./forecast1.jpg"><img width="360" height="200" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./forecast2.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Forecast flow</div><br></center>
+
+<p><br></p>
+<h3 id="Evacuate"><a href="#Evacuate" class="headerlink" title="Evacuate"></a>Evacuate</h3><p>For evacuating, we use a linear programming method to generate evacuating strategy, which utilize urban transit network to transport the crowd flow.</p>
+<center class="half"><br><img width="600" height="250" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./model2.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Evacuating Model</div><br></center>
+
+
+
+<center class="half"><br><img width="600" height="350" style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="./network.jpg"><br><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">Urban Transit Network Analysis</div><br></center>
+
+<p><br></p>
+<h3 id="Future-Works"><a href="#Future-Works" class="headerlink" title="Future Works"></a>Future Works</h3><ul>
+<li>It’s hard to visualize the evacuating strategy and evaluate how different strategies affect the efficiency of evacuation. So we are planning to design another tool to simulate the evacuation effect and visualize the human mobility.</li>
+</ul>
 
 
     
